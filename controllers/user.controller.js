@@ -4,7 +4,6 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 // Cargamos el módulo de jsonwebtoken
 const jwt = require("jsonwebtoken");
-const HTTPSTATUSCODE = require("../utils/httpStatusCode");
 async function checkUser() {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -13,7 +12,6 @@ async function checkUser() {
     return false;
   }
 }
-
 async function createUser(req, res, next) {
   try {
     const newUser = new User();
