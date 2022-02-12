@@ -5,6 +5,14 @@ const bcrypt = require("bcrypt");
 // Cargamos el módulo de jsonwebtoken
 const jwt = require("jsonwebtoken");
 const HTTPSTATUSCODE = require("../utils/httpStatusCode");
+async function checkUser() {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    return user;
+  } catch {
+    return false;
+  }
+}
 
 async function createUser(req, res, next) {
   try {
@@ -13,7 +21,7 @@ async function createUser(req, res, next) {
     newUser.email = req.body.email;
     newUser.password = bcrypt.hashSync(req.body.password, 10);
     //newUser.adminRole = req.body.adminRole;
-    if (!(await User.findOne({ email: req.body.email }))) {
+    if (checkUser) {
       await newUser.save();
       return res.status(201).json("User registered");
     }
