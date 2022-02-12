@@ -8,7 +8,7 @@ const {
   postProduct,
   putProduct,
   deleteProduct,
-} = require("../controllers/foods.controller");
+} = require("../controllers/products.controller");
 const { isAdmin } = require("../middleware/admin.middleware");
 const { isAuth } = require("../middleware/auth.middleware");
 // READ OPERATIONS

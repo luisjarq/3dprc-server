@@ -26,13 +26,13 @@ server.use(cors());
 //server.use(logger("dev"));
 // Middleware enrutador
 const usersRouter = require("./routers/users.router");
-const prductsRouter = require("./routers/prducts.router");
+const productsRouter = require("./routers/products.router");
 const productParts = require("./routers/productParts.router");
 const promosRouter = require("./routers/promos.router");
 const commentsRouter = require("./routers/comments.router");
 const cartRouter = require("./routers/cart.router");
 server.use("/users", usersRouter);
-server.use("/prducts", prductsRouter);
+server.use("/prducts", productsRouter);
 server.use("/productParts", productParts);
 server.use("/promos", promosRouter);
 server.use("/comments", commentsRouter);

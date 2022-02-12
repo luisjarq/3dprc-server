@@ -5,10 +5,10 @@ const productPartSchema = new Schema(
   {
     name: { type: String, required: true },
     description: { type: String, required: true },
-    imgs: [{ type: mongoose.Types.ObjectId, ref: "Img" }],
+    imgs: [{ type: String, required: false }],
     type: { type: String, required: true, default: false },
-    price :{ type: Number, required: true },
-    provider: { String, required: true },
+    price: { type: Number, required: true },
+    provider: { type: String, required: true },
   },
   {
     timestamps: true,

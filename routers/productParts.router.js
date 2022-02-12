@@ -1,26 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const {
-  getAllProducts,
+  getAllproductParts,
   getByName,
-  getByType,
   getById,
-  postProduct,
-  putProduct,
-  deleteProduct,
-} = require("../controllers/ingredients.controller");
+  postProductPart,
+  putProductPart,
+  deleteProductPart,
+} = require("../controllers/productParts.controller");
 const { isAdmin } = require("../middleware/admin.middleware");
 const { isAuth } = require("../middleware/auth.middleware");
 // READ OPERATIONS
-router.get("/", getAllProducts);
+router.get("/", getAllproductParts);
 router.get("/:id" , getById);
 router.get("/name/:name" , getByName);
-router.get("/type/:name" , getByType);
 // CREATE OPERATION
-router.post("/", [isAdmin], postProduct);
+router.post("/", [isAdmin], postProductPart);
 // UPDATE OPERATION
-router.put("/:id", [isAdmin], putProduct);
+router.put("/:id", [isAdmin], putProductPart);
 // DELETE OPERATION
-router.delete("/:id", [isAdmin], deleteProduct);
+router.delete("/:id", [isAdmin], deleteProductPart);
 
 module.exports = router;

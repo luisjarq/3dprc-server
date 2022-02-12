@@ -1,5 +1,5 @@
 const { Error } = require("mongoose");
-const Product = require("../models/products");
+const Product = require("../models/product");
 
 function getAllProducts(req, res, next) {
   Product.find().exec((error, product) => {

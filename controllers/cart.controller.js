@@ -25,7 +25,7 @@ function getById(req, res, next) {
     return res.json(cart);
   });
 }
-function getByUser(req, res, next) {
+function getCartByUser(req, res, next) {
   const user = req.params.user;
   Cart.findOne({user:user}).exec((error, cart) => {
     if (!cart) {
@@ -79,7 +79,7 @@ function deleteCart(req, res, next) {
 module.exports = {
   getAllCarts,
   getById,
-  getByUser,
+  getCartByUser,
   postCart,
   putCart,
   deleteCart,

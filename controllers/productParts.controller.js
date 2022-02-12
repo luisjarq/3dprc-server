@@ -1,7 +1,7 @@
 const { Error } = require("mongoose");
 const ProductPart = require("../models/productPart");
 
-function getAllproductPart(req, res, next) {
+function getAllproductParts(req, res, next) {
   ProductPart.find().exec((error, movie) => {
     if (error) {
       next(error);
@@ -84,7 +84,7 @@ function deleteProductPart(req, res, next) {
 }
 // Funciones auxiliares, no exportar
 module.exports = {
-  getAllproductPart,
+  getAllproductParts,
   getByName,
   getById,
   postProductPart,
