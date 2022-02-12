@@ -31,12 +31,14 @@ const productParts = require("./routers/productParts.router");
 const promosRouter = require("./routers/promos.router");
 const commentsRouter = require("./routers/comments.router");
 const cartRouter = require("./routers/cart.router");
+const modelRouter = require("./routers/model.router");
 server.use("/users", usersRouter);
 server.use("/prducts", productsRouter);
 server.use("/productParts", productParts);
 server.use("/promos", promosRouter);
 server.use("/comments", commentsRouter);
 server.use("/cart", cartRouter);
+server.use("/models", modelRouter);
 // Middleware de enrutado para rutas no existentes (tambien se le puede omitir el primer argumento?)
 const HTTPSTATUSCODE = require("./utils/httpStatusCode");
 server.use("*", (req, res, next) => {
