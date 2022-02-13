@@ -13,8 +13,8 @@ router.get("/",askToken);
 // CREATE OPERATION
 router.post("/", receiveToken);
 // UPDATE OPERATION
-router.put("/:id", [, putCart);
+//router.put("/:id", );
 // DELETE OPERATION
-router.delete("/:id", [isAuth], deleteCart);
+//router.delete("/:id", );
 
 module.exports = router;
