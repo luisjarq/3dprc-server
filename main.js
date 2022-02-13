@@ -39,6 +39,7 @@ server.use("/promos", promosRouter);
 server.use("/comments", commentsRouter);
 server.use("/cart", cartRouter);
 server.use("/models", modelRouter);
+server.use("/forge", callbackForgeRouter);
 // Middleware de enrutado para rutas no existentes (tambien se le puede omitir el primer argumento?)
 const HTTPSTATUSCODE = require("./utils/httpStatusCode");
 server.use("*", (req, res, next) => {

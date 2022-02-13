@@ -1,7 +1,18 @@
 const multer = require("multer");
-
+const { Readable } = require("stream");
+const mongodb = require("mongodb");
+const MongoClient = mongodb.MongoClient;
+const ObjectID = mongodb.ObjectID;
+const { DB_URL } = require("../config/config");
+let db;
+MongoClient.connect(DB_URL, (err, database) => {
+  if (err) {
+    console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
+    process.exit(1);
+  }
+  db = database;
+});
 //GET model by ID Route
-const multer = require(multer)
 function getModelById(req, res, next) {
   try {
     var modelID = new ObjectID(req.params.modelID);
@@ -28,21 +39,26 @@ function getModelById(req, res, next) {
 
 //POST model Route
 function postModel(req, res, next) {
-  const storage = multer.memoryStorage()
-  const upload = multer({ storage: storage, limits: { fields: 1, fileSize: 6000000, files: 1, parts: 2 }});
+  const storage = multer.memoryStorage();
+  const upload = multer({
+    storage: storage,
+    limits: { fields: 1, fileSize: 6000000, files: 1, parts: 2 },
+  });
   upload.single("model")(req, res, (err) => {
     if (err) {
-      next(
-        res.status(400).json({ message: "Upload Request Validation Failed" })
-      );
+      return res
+        .status(400)
+        .json({ message: "Upload Request Validation Failed" });
     } else if (!req.body.name) {
-      next(res.status(400).json({ message: "No model name in request body" }));
+      return res.status(400).json({ message: "No model name in request body" });
     }
+
     let modelName = req.body.name;
+
     // Covert buffer to Readable Stream
-    const readableModelStream = new Readable();
-    readableModelStream.push(req.file.buffer);
-    readableModelStream.push(null);
+    const readableTrackStream = new Readable();
+    readableTrackStream.push(req.file.buffer);
+    readableTrackStream.push(null);
 
     let bucket = new mongodb.GridFSBucket(db, {
       bucketName: "models",
@@ -50,22 +66,23 @@ function postModel(req, res, next) {
 
     let uploadStream = bucket.openUploadStream(modelName);
     let id = uploadStream.id;
-    readableModelStream.pipe(uploadStream);
+    readableTrackStream.pipe(uploadStream);
 
     uploadStream.on("error", () => {
-      next(res.status(500).json({ message: "Error uploading file" }));
+      return res.status(500).json({ message: "Error uploading file" });
     });
 
     uploadStream.on("finish", () => {
-      return res.status(201).json({
-        message:
-          "File uploaded successfully, stored under Mongo ObjectID: " + id,
-      });
+      return res
+        .status(201)
+        .json({
+          message:
+            "File uploaded successfully, stored under Mongo ObjectID: " + id,
+        });
     });
   });
 }
 module.exports = {
-    getModelById,
-    postModel
-  };
-  
+  getModelById,
+  postModel,
+};
