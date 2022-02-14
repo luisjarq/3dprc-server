@@ -3,7 +3,7 @@ const router = express.Router();
 
 function callbackToken(req,res,next){
     //console.log(req);
-    return res.status(201).json(req.query);
+    return res.status(201).json(req.query.code);
 }
 //const { getByUser } = require("../controllers/cart.controller");
 // READ OPERATIONS
