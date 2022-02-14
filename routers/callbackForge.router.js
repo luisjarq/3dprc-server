@@ -5,11 +5,15 @@ function callbackToken(req,res,next){
     //console.log(req);
     return res.status(201).json(req.query.code);
 }
+function receiveToken(req,res,next){
+    //console.log(req);
+    return res.status(201).json(req.body);
+}
 //const { getByUser } = require("../controllers/cart.controller");
 // READ OPERATIONS
 router.get("/",callbackToken);
 // CREATE OPERATION
-//router.post("/", receiveToken);
+router.post("/", receiveToken);
 // UPDATE OPERATION
 //router.put("/:id", );
 // DELETE OPERATION
