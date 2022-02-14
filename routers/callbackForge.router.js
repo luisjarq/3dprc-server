@@ -5,7 +5,7 @@ function receiveToken(req,res,next){
 console.log(req);
 }
 function askToken(req,res,next){
-
+    console.log(req);
 }
 //const { getByUser } = require("../controllers/cart.controller");
 // READ OPERATIONS
