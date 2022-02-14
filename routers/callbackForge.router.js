@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 function receiveToken(req,res,next){
-
+console.log(req);
 }
 function askToken(req,res,next){
 
