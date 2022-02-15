@@ -12,7 +12,6 @@ const productSchema = new Schema(
     discount :{ type: Number, required: true },    
     stock :{ type: Number, required: true },    
     type :{ type: String, required: true },
-
   },
   {
     timestamps: true,
