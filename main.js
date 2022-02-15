@@ -32,6 +32,7 @@ const promosRouter = require("./routers/promos.router");
 const commentsRouter = require("./routers/comments.router");
 const cartRouter = require("./routers/cart.router");
 const modelRouter = require("./routers/model.router");
+const callbackForgeRouter = require("./routers/callbackForge.router");
 server.use("/users", usersRouter);
 server.use("/prducts", productsRouter);
 server.use("/productParts", productParts);

@@ -1,15 +1,17 @@
 const express = require("express");
 const router = express.Router();
 
-function receiveToken(req,res,next){
-
+function callbackToken(req,res,next){
+    //console.log(req);
+    return res.status(201).json(req.query.code);
 }
-function askToken(req,res,next){
-
+function receiveToken(req,res,next){
+    //console.log(req);
+    return res.status(201).json(req.body);
 }
 //const { getByUser } = require("../controllers/cart.controller");
 // READ OPERATIONS
-router.get("/",askToken);
+router.get("/",callbackToken);
 // CREATE OPERATION
 router.post("/", receiveToken);
 // UPDATE OPERATION
