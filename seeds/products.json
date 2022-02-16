@@ -1,0 +1,80 @@
+[
+  {
+    "name": "CarraPrinter",
+    "brand": "LJLC",
+    "description": "Impresora 3d de fgran formato, con husillos roscados de paso largo para maxima precision sin perder velocidad. Guias lineales Igus para un bajo mantenimiento",
+    "imgs": "",
+    "productParts": "",
+    "price": "1500",
+    "discount": "10",
+    "stock": "bajo pedido",
+    "type": "Impresora3D"
+  },
+  {
+    "name": "Fresadora de columna",
+    "brand": "LJLC",
+    "description": "Maquina pesada para la mecanizacion de metales blandos como aluminio, laton, cobre...",
+    "imgs": "",
+    "productParts": "",
+    "price": "1200",
+    "discount": "0",
+    "stock": "bajo pedido",
+    "type": "CNC"
+  },
+  {
+    "name": "Torno metal",
+    "brand": "LJLC",
+    "description": "Torno de metal para metales blandos como aluminio, laton, cobre...",
+    "imgs": "",
+    "productParts": "",
+    "price": "1000",
+    "discount": "10",
+    "stock": "bajo pedido",
+    "type": "CNC"
+  },
+  {
+    "name": "Router CNC",
+    "brand": "LJLC",
+    "description": "Router cnc para madera y metales blandos de bajo espesor",
+    "imgs": "",
+    "productParts": "",
+    "price": "2000",
+    "discount": "10",
+    "stock": "bajo pedido",
+    "type": "CNC"
+  },
+  {
+    "name": "Ender 6 mod",
+    "brand": "LJLC",
+    "description": "Ender 6 modificada para un maximo rendimiento",
+    "imgs": "",
+    "productParts": ["Duet 6HC","Toolboard 1LC","Hemera extruder", "Guias lineales"],
+    "price": "1120",
+    "discount": "10",
+    "stock": "bajo pedido",
+    "type": "Impresora3D"
+  },
+  {
+    "name": "Kursk k-141 Submarino RC",
+    "brand": "LJLC",
+    "description": "Modelo de submarino RC para impresion 3D",
+    "imgs": "",
+    "productParts": [],
+    "price": "1120",
+    "discount": "10",
+    "stock": "bajo pedido",
+    "type": "ModeloRC"
+  },
+  {
+    "name": "Heavy Tank T57 Tanque RC",
+    "brand": "LJLC",
+    "description": "Modelo de tanque RC para impresion 3D",
+    "imgs": "",
+    "productParts": [],
+    "price": "1120",
+    "discount": "10",
+    "stock": "bajo pedido",
+    "type": "ModeloRC"
+  }
+
+]
