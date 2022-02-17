@@ -2,7 +2,9 @@ const { Error } = require("mongoose");
 const Product = require("../models/product");
 
 function getAllProducts(req, res, next) {
-  Product.find().exec((error, product) => {
+  Product.find()
+  .populate("productParts")
+  .exec((error, product) => {
     if (error) {
       next(error);
     }
@@ -46,7 +48,6 @@ function getByType(req, res, next) {
   const type = req.params.type;
   Product.findOne({ type: type })
     .populate("productParts")
-    .populate("imgs")
     .exec((error, product) => {
       if (!product) {
         const notFound = new Error(`[ERROR] name ${name} not found`);
