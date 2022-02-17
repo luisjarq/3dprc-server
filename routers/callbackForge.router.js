@@ -4,6 +4,7 @@ const { config } = require("dotenv");
 var ForgeSDK = require("forge-apis");
 const { ClientId, ClientSecret, Callback } = require("../config/config");
 let oAuth2ThreeLegged;
+let credentials;
 
 function receiveToken(req, res, next) {
   //console.log(req);
@@ -13,6 +14,7 @@ function receiveToken(req, res, next) {
     },
     function (err) {
       console.error(err);
+      next(error);
     }
   );
 }
@@ -42,11 +44,26 @@ function authorize2L(req, res, next) {
   );
 
   oAuth2TwoLegged.authenticate().then(
-    function (credentials) {
+    function (cred) {
+      credentials = cred;
       res.status(201).json(credentials);
     },
     function (err) {
       console.error(err);
+      next(error);
+    }
+  );
+}
+function getHubs(req, res, next) {
+  var HubsApi = new ForgeSDK.HubsApi();
+  HubsApi.getHubs({}, oAuth2ThreeLegged, credentials).then(
+    function (hubs) {
+      console.log(hubs);
+      res.json(hubs);
+    },
+    function (err) {
+      console.error(err);
+      next(error);
     }
   );
 }
@@ -54,6 +71,7 @@ function authorize2L(req, res, next) {
 // READ OPERATIONS
 router.get("/authorize3L", authorize);
 router.get("/authorize2L", authorize2L);
+router.get("/hubs", getHubs);
 // CREATE OPERATION
 router.post("/", receiveToken);
 // UPDATE OPERATION
