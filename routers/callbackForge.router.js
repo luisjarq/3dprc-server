@@ -67,16 +67,11 @@ function getHubs(req, res, next) {
     }
   );
 }
-//const { getByUser } = require("../controllers/cart.controller");
+// CREATE OPERATION
+router.post("/", receiveToken);
 // READ OPERATIONS
 router.get("/authorize3L", authorize);
 router.get("/authorize2L", authorize2L);
 router.get("/hubs", getHubs);
-// CREATE OPERATION
-router.post("/", receiveToken);
-// UPDATE OPERATION
-//router.put("/:id", );
-// DELETE OPERATION
-//router.delete("/:id", );
 
 module.exports = router;
