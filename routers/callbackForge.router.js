@@ -27,7 +27,7 @@ function authorize3L(req, res, next) {
     ClientId,
     ClientSecret,
     Callback,
-    ["data:read data:write data:search data:create"],
+    ["data:read", "data:write", "data:search", "data:create"],
     autoRefresh
   );
   res.redirect(oAuth2ThreeLegged.generateAuthUrl());
@@ -37,7 +37,7 @@ function authorize2L(req, res, next) {
   let oAuth2TwoLegged = new ForgeSDK.AuthClientTwoLegged(
     ClientId,
     ClientSecret,
-    ['viewables:read'],
+    ["viewables:read"],
     autoRefresh
   );
 
