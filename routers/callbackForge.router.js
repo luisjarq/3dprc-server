@@ -18,7 +18,7 @@ function receiveToken(req, res, next) {
     }
   );
 }
-function authorize(req, res, next) {
+function authorize3L(req, res, next) {
   // Initialize the 3-legged OAuth2 client, set specific scopes and optionally set the `autoRefresh` parameter to true
   // if you want the token to auto refresh
   let autoRefresh = true;
@@ -29,8 +29,6 @@ function authorize(req, res, next) {
     ["data:read"],
     autoRefresh
   );
-
-  // Generate a URL page that asks for permissions for the specified scopes.
   res.redirect(oAuth2ThreeLegged.generateAuthUrl());
 }
 function authorize2L(req, res, next) {
@@ -70,7 +68,8 @@ function getHubs(req, res, next) {
 // CREATE OPERATION
 router.post("/", receiveToken);
 // READ OPERATIONS
-router.get("/authorize3L", authorize);
+router.get("/", receiveToken);
+router.get("/authorize3L", authorize3L);
 router.get("/authorize2L", authorize2L);
 router.get("/hubs", getHubs);
 
