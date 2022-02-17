@@ -7,7 +7,7 @@ let oAuth2ThreeLegged;
 let credentials;
 
 function receiveToken(req, res, next) {
-  //console.log(req);
+  console.log(req);
   oAuth2ThreeLegged.getToken(req.query.code).then(
     function (credentials) {
       res.status(201).json(credentials);
