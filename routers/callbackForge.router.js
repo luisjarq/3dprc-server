@@ -9,11 +9,12 @@ let credentials;
 function receiveToken(req, res, next) {
   console.log(req);
   oAuth2ThreeLegged.getToken(req.query.code).then(
-    function (credentials) {
+    (cred) => {
+      credentials = cred;
       res.status(201).json(credentials);
     },
-    function (err) {
-      console.error(err);
+    (error) => {
+      console.error(error);
       next(error);
     }
   );
@@ -33,7 +34,6 @@ function authorize3L(req, res, next) {
 }
 function authorize2L(req, res, next) {
   let autoRefresh = true; // or false
-
   let oAuth2TwoLegged = new ForgeSDK.AuthClientTwoLegged(
     ClientId,
     ClientSecret,
@@ -53,14 +53,15 @@ function authorize2L(req, res, next) {
   );
 }
 function getHubs(req, res, next) {
+  console.log(credentials);
   var HubsApi = new ForgeSDK.HubsApi();
   HubsApi.getHubs({}, oAuth2ThreeLegged, credentials).then(
-    function (hubs) {
+    (hubs) => {
       console.log(hubs);
       res.json(hubs);
     },
-    function (err) {
-      console.error(err);
+    (error) => {
+      console.error(error);
       next(error);
     }
   );
