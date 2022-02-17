@@ -46,8 +46,8 @@ function authorize2L(req, res, next) {
       credentials = cred;
       res.status(201).json(credentials);
     },
-    function (err) {
-      console.error(err);
+    function (error) {
+      console.error(error);
       next(error);
     }
   );
